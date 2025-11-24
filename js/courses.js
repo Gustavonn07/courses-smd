@@ -1,0 +1,130 @@
+export const courses = [
+  {
+    cover: "/img/Logo Snake Game.png",
+    title: "Aprendendo POO pelo Jogo da Cobrinha",
+    description:
+      "No curso, serão ensinados alguns conceitos básicos da programação sequencial e da programação orientada à objetos utilizando o p5 editor, um ambiente online utilizado para programação visual. Por meio da construção do famoso jogo da cobrinha, serão ensinados assuntos como variáveis, condicionais, estruturas de repetição, vetores, classes, métodos e construtores.",
+    time: 4,
+    startDate: "22/11/2025",
+    endDate: "20/12/2025",
+    authors: [
+      { name: "Anderson Maia Santos", mat: 579356 },
+      { name: "Kesia Rocha Araujo", mat: 581537 }
+    ]
+  },
+  {
+    cover: "/img/Frame 35.png",
+    title: "Repetição, Caos e Padrões: Explorando Truchet Tiles em p5.js.",
+    description:
+      "O curso apresenta, de forma prática e visual, como formas geométricas, cores e estruturas de código podem ser combinadas para gerar composições dinâmicas. A partir do uso de laços de repetição e da introdução de elementos caóticos com funções aleatórias, o participante aprende a criar desde padrões ordenados, como tabuleiros, até formações imprevisíveis inspiradas nos padrões de Truchet, explorando a relação entre ordem, repetição e variação na programação criativa.",
+    time: 4,
+    startDate: "24/11/2025",
+    endDate: "20/12/2025",
+    authors: [
+      { name: "Nicole Rabelo Lima", mat: 581002 },
+      { name: "Thayná Nascimento Albano da Silva", mat: 580981 },
+      { name: "Jonata Monteiro Alves", mat: 580746 }
+    ]
+  },
+  {
+    cover: "/img/Logo_prog.png",
+    title: "Funções e Jogos",
+    description:
+      "Princípios do JavaScript, com foco nos tipos de funções e sua aplicação em minigames.",
+    time: 4,
+    startDate: "-",
+    endDate: "-",
+    authors: [
+      { name: "Cybele Chaves Cavalcante", mat: 581615 },
+      { name: "Giovanna Carneiro Sales", mat: 582056 }
+    ]
+  },
+  {
+    cover: "/img/POOAPV.png",
+    title: "POO aplicado à programação visual",
+    description:
+      "Neste curso, você aprenderá os fundamentos da Programação Orientada a Objetos (POO) aplicados à programação visual com p5.js. Através de exemplos práticos, desenvolverá desde classes e vetores de objetos até matrizes e grids, culminando em um jogo interativo como projeto final.",
+    time: 4,
+    startDate: "22/11/2025",
+    endDate: "20/12/2025",
+    authors: [
+      { name: "Iarley Alves de Sousa", mat: 579910 },
+      { name: "Iasmin Oliveira e Sena", mat: 579299 }
+    ]
+  },
+  {
+    cover: "/img/Logo Algoritmos de Sorting.png",
+    title: "Ordenando o Caos: Algoritmos de Sorting em JavaScript",
+    description:
+      "Neste curso, você aprenderá os conceitos básicos de Algortimos de Ordenação, com explicações da lógica por trás dos principais Algoritmos de Sorting (Bubble Sort, Merge Sort e Quick Sort) e com aplicação da teoria em código, utilizando a linguagem JavaScript na biblioteca do P5 Editor.",
+    time: 4,
+    startDate: "22/11/2025",
+    endDate: "-",
+    authors: [
+      { name: "Naamã Alecsander de Sousa Tavares", mat: 581551 },
+      { name: "Pedro Bruno Rodrigues de Almeida", mat: 581927 }
+    ]
+  },
+  {
+    cover: "/img/logo.png",
+    title: "Fábrica de Jogos",
+    description:
+      "Neste curso, será ensinado de forma lúdica e prática sobre dois conceitos fundamentais da programação: Variáveis e vetores. Durante a aplicação exploraremos a criatividade dos alunos na produção de jogos.",
+    time: 4,
+    startDate: "-",
+    endDate: "-",
+    authors: [
+      { name: "Júlia Flor de Sousa Campos", mat: 581501 },
+      { name: "Bárbara Letícia Teixeira de Carvalho", mat: 582288 }
+    ]
+  },
+  {
+    cover: "/img/LogoProg2_DEVPOO.png",
+    title: "DEVPOO: Imersão na Programação Orientada a Objetos",
+    description:
+      "Este curso apresenta os conceitos fundamentais da Programação Orientada a Objetos (POO) de forma prática, com exemplos em JavaScript. O aluno aprenderá sobre classes, objetos, atributos, métodos, encapsulamento, herança, polimorfismo e abstração, aplicando os conhecimentos em um projeto final de cadastro de alunos.",
+    time: 4,
+    startDate: "24/11/2025",
+    endDate: "12/12/2025",
+    authors: [
+      { name: "Alisson da Silva Lucas", mat: 580883 },
+      { name: "Yan Lucas Gondim Rabelo", mat: 578867 }
+    ]
+  },
+  {
+    cover: "/img/",
+    title: "Introdução à lógica de programação utilizando p5.js",
+    description:
+      "Neste curso, você dará os seus primeiros passos na programação, entendendo o que é um algoritmo, estruturas sequenciais, estruturas de repetição e estruturas condicionais, por meio da biblioteca p5 do Java Script.",
+    time: 4,
+    startDate: "22/11/2025",
+    endDate: "20/12/2025",
+    authors: [
+      { name: "Antonio Pedro Martins Alves", mat: 580934 },
+      { name: "Pedro Roger Peixoto", mat: 578745 }
+    ]
+  },
+  {
+    cover: "/img/Logo_curso.png",
+    title: "Conceitos Básicos de Programação Orientada a Objetos",
+    description:
+      "Neste curso você aprenderá os conceitos básicos da Programação Orientada a Objetada a Objetos, aplicados na linguagem JavaScript. O aluno aprenderá desde conceitos básicos, como classes e objetos, até herança e encapsulamento.",
+    time: 4,
+    startDate: "24/11/2025",
+    endDate: "20/12/2025",
+    authors: [{ name: "Guilherme de Menezes Furtado", mat: 509805 }]
+  },
+  {
+    cover: "/img/Módulo 1 - POO JS(1).png",
+    title: "Introdução à Programação Orientada a Objetos com JavaScript",
+    description:
+      "Este curso apresenta os conceitos fundamentais da Programação Orientada a Objetos (POO) utilizando a linguagem JavaScript. Serão abordados conceitos como classes, objetos, métodos e o princípio básico de herança.",
+    time: 4,
+    startDate: "22/11/2025",
+    endDate: "20/12/2025",
+    authors: [
+      { name: "Larissa do Nascimento de Oliveira", mat: 581719 },
+      { name: "Liz Maciel Lopes", mat: 580511 }
+    ]
+  }
+];
