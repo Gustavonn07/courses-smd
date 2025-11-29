@@ -1,106 +1,165 @@
-export function createCard({ cover, title, description, time, authors, startDate, endDate }) {
-  const card = document.createElement('div');
-  card.className =
-    'w-full max-w-xl h-[740px] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300';
+import { createModal } from "./Modal.js";
 
-  const modal = document.createElement('div');
-  modal.style.position = 'fixed';
-  modal.style.top = '0';
-  modal.style.left = '0';
-  modal.style.width = '100vw';
-  modal.style.height = '100vh';
-  modal.style.background = 'rgba(0,0,0,0.7)';
-  modal.style.display = 'none';
-  modal.style.alignItems = 'center';
-  modal.style.justifyContent = 'center';
-  modal.style.zIndex = '999';
-  modal.style.padding = '20px';
+export class CourseCard {
+  #data;
+  #body;
+  #modal;
 
-  const modalImg = document.createElement('img');
-  modalImg.src = cover;
-  modalImg.style.maxWidth = '90vw';
-  modalImg.style.maxHeight = '90vh';
-  modalImg.style.borderRadius = '12px';
-  modalImg.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
-  modal.appendChild(modalImg);
+  constructor(courseData) {
+    this.#data = courseData;
+    this.#body = document.getElementById('body');
+    this.#modal = this.#generateModalInfos();
+  }
 
-  const closeBtn = document.createElement('span');
-  closeBtn.textContent = '✖';
-  closeBtn.style.position = 'absolute';
-  closeBtn.style.top = '20px';
-  closeBtn.style.right = '30px';
-  closeBtn.style.fontSize = '32px';
-  closeBtn.style.color = 'white';
-  closeBtn.style.cursor = 'pointer';
-  closeBtn.style.fontWeight = 'bold';
-  modal.appendChild(closeBtn);
+  #generateModalInfos() {
+    const { cover, title, description, authors, info } = this.#data;
 
-  document.body.appendChild(modal);
+    const modalContent = document.createElement('div');
+    modalContent.className = `
+      bg-white lg:rounded-xl shadow-xl p-6 lg:max-w-3xl max-h-screen lg:max-h-[95vh] overflow-y-auto
+      text-gray-800 space-y-6
+    `;
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-  });
+    const img = document.createElement('img');
+    img.src = cover;
+    img.className = 'w-full max-h-[600px] h-full object-cover rounded-lg shadow';
+    modalContent.appendChild(img);
 
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
+    const t = document.createElement('h2');
+    t.textContent = title;
+    t.className = 'text-3xl font-bold';
+    modalContent.appendChild(t);
 
-  const cardImg = document.createElement('img');
-  cardImg.src = cover;
-  cardImg.alt = title;
-  cardImg.className = 'w-full h-[60vw] max-h-96 object-cover cursor-pointer';
+    const d = document.createElement('p');
+    d.textContent = description;
+    d.className = 'text-gray-700 text-sm';
+    modalContent.appendChild(d);
 
-  cardImg.addEventListener('click', () => {
-    modal.style.display = 'flex';
-  });
+    const authorsBox = document.createElement('div');
+    authorsBox.className = 'border-t pt-4 space-y-2';
 
-  const cardBody = document.createElement('div');
-  cardBody.className = 'p-4';
+    const authorsTitle = document.createElement('h3');
+    authorsTitle.textContent = 'Instrutores';
+    authorsTitle.className = 'font-semibold text-xl';
+    authorsBox.appendChild(authorsTitle);
 
-  const cardTitle = document.createElement('h3');
-  cardTitle.textContent = title;
-  cardTitle.className = 'text-xl font-semibold mb-2 text-gray-800';
+    authors.forEach(author => {
+      const p = document.createElement('p');
+      p.textContent = `👤 ${author.name} — Matrícula: ${author.mat}`;
+      p.className = 'text-gray-700';
+      authorsBox.appendChild(p);
+    });
 
-  const cardDescription = document.createElement('p');
-  cardDescription.textContent = description;
-  cardDescription.className = 'text-gray-600 text-sm mb-3';
+    modalContent.appendChild(authorsBox);
 
-  const cardTime = document.createElement('p');
-  cardTime.textContent = `⏱️ ${time} horas`;
-  cardTime.className = 'text-gray-700 text-sm font-medium mb-3';
+    if (info) {
+      const infoBox = document.createElement('div');
+      infoBox.className = 'border-t pt-4 space-y-4';
 
-  const datesWrapper = document.createElement('div');
-  datesWrapper.className = 'flex items-center justify-between mb-3';
+      const addInfoTitle = document.createElement('h3');
+      addInfoTitle.textContent = 'Informações do Curso';
+      addInfoTitle.className = 'text-xl font-semibold';
+      infoBox.appendChild(addInfoTitle);
 
-  const start = document.createElement('p');
-  start.textContent = `📅 Início: ${startDate}`;
-  start.className = 'text-gray-700 text-sm font-medium';
+      const addField = (label, value) => {
+        if (!value) return;
 
-  const end = document.createElement('p');
-  end.textContent = `🏁 Fim: ${endDate}`;
-  end.className = 'text-gray-700 text-sm font-medium';
+        const wrapper = document.createElement('div');
+        wrapper.className = 'space-y-1';
 
-  datesWrapper.appendChild(start);
-  datesWrapper.appendChild(end);
+        const l = document.createElement('p');
+        l.textContent = label;
+        l.className = 'font-medium text-gray-900';
 
-  const authorsContainer = document.createElement('div');
-  authorsContainer.className = 'mt-2 space-y-1';
+        const v = document.createElement('p');
+        v.textContent = value;
+        v.className = 'text-gray-700 text-sm';
 
-  authors.forEach(author => {
-    const auth = document.createElement('p');
-    auth.textContent = `👤 ${author.name} — Matrícula: ${author.mat}`;
-    auth.className = 'text-gray-700 text-sm';
-    authorsContainer.appendChild(auth);
-  });
+        wrapper.appendChild(l);
+        wrapper.appendChild(v);
+        infoBox.appendChild(wrapper);
+      };
 
-  cardBody.appendChild(cardTitle);
-  cardBody.appendChild(cardDescription);
-  cardBody.appendChild(cardTime);
-  cardBody.appendChild(datesWrapper);
-  cardBody.appendChild(authorsContainer);
+      addField("Nome da Disciplina:", info.subject);
+      addField("Semestre:", info.semester);
+      addField("Resumo Detalhado:", info.summary);
+      addField("Objetivos:", info.objectives);
+      addField("Ementa:", info.syllabus);
+      addField("Carga Horária:", info.workload);
+      addField("Pré-requisitos:", info.prerequisites);
+      addField("Média de Aprovação:", info.approval);
 
-  card.appendChild(cardImg);
-  card.appendChild(cardBody);
+      modalContent.appendChild(infoBox);
+    }
 
-  return card;
+    return createModal(modalContent);
+  }
+
+  render() {
+    const { cover, title, description, time, authors, startDate, endDate } = this.#data;
+
+    const card = document.createElement('div');
+    card.className =
+      'w-full max-w-[600px] h-[740px] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300';
+
+    const cardImg = document.createElement('img');
+    cardImg.src = cover;
+    cardImg.alt = title;
+    cardImg.className = 'w-full h-[400px] object-cover cursor-pointer';
+
+    card.addEventListener('click', () => {
+      this.#modal.classList.replace('hidden', 'flex');
+      this.#body.classList.add('overflow-hidden');
+    });
+
+    const cardBody = document.createElement('div');
+    cardBody.className = 'p-4';
+
+    const cardTitle = document.createElement('h3');
+    cardTitle.textContent = title;
+    cardTitle.className = 'text-xl font-semibold mb-2 text-gray-800';
+
+    const cardDescription = document.createElement('p');
+    cardDescription.textContent = description;
+    cardDescription.className = 'text-gray-600 text-sm mb-3';
+
+    const cardTime = document.createElement('p');
+    cardTime.textContent = `⏱️ ${time} horas`;
+    cardTime.className = 'text-gray-700 text-sm font-medium mb-3';
+
+    const datesWrapper = document.createElement('div');
+    datesWrapper.className = 'flex items-center justify-between mb-3';
+
+    const start = document.createElement('p');
+    start.textContent = `📅 Início: ${startDate}`;
+    start.className = 'text-gray-700 text-sm font-medium';
+
+    const end = document.createElement('p');
+    end.textContent = `🏁 Fim: ${endDate}`;
+    end.className = 'text-gray-700 text-sm font-medium';
+
+    datesWrapper.appendChild(start);
+    datesWrapper.appendChild(end);
+
+    const authorsContainer = document.createElement('div');
+    authorsContainer.className = 'mt-2 space-y-1';
+
+    authors.forEach(author => {
+      const auth = document.createElement('p');
+      auth.textContent = `👤 ${author.name} — Matrícula: ${author.mat}`;
+      auth.className = 'text-gray-700 text-sm';
+      authorsContainer.appendChild(auth);
+    });
+
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardDescription);
+    cardBody.appendChild(cardTime);
+    cardBody.appendChild(datesWrapper);
+    cardBody.appendChild(authorsContainer);
+
+    card.appendChild(cardImg);
+    card.appendChild(cardBody);
+
+    return card;
+  }
 }
