@@ -241,5 +241,29 @@ export const courses = [
       prerequisites: "Não se aplica",
       approval: "Aprovação será com média maior ou igual a 7,0 (sete) e frequência maior ou igual a 75%",
     }
+  },
+  {
+    cover: "./img/capa curso.png",
+    title: "Foca no Array",
+    description:
+      "Este curso introdutório apresenta os fundamentos de programação com arrays, utilizando a biblioteca p5.js como ambiente de prática. Ao longo das aulas serão abordados os conceitos de inicialização , acesso, manipulção entre outros conceitos envolvendo arrays.",
+    time: 4,
+    startDate: "09/12/2025",
+    endDate: "12/12/2025",
+    authors: [
+      { name: "Maria da Glória Aragão do Nascimento", mat: 589406 },
+      { name: "Maria Sofia Feitosa Peixoto", mat: null }
+    ],
+    info: {
+      courseName: "Foca no Array",
+      subject: "Programação II",
+      semester: "2º Semestre",
+      summary: "Este curso introdutório tem como objetivo apresentar o conceito de arrays de forma prática e visual, utilizando a biblioteca p5.js. Ao longo das aulas, os estudantes aprenderão a criar, acessar e manipular arrays para controlar elementos gráficos, cores e animações simples. O conteúdo será trabalhado por meio de exemplos interativos e exercícios criativos, incentivando a compreensão intuitiva do uso de arrays na programação.",
+      objectives: "Proporcionar aos estudantes uma compreensão clara e aplicada do conceito de arrays em programação, explorando seu uso em contextos gráficos com a linguagem JavaScript e a biblioteca p5.js.",
+      syllabus: "Estudo introdutório sobre o uso de arrays na programação com p5.js. Abordagem dos conceitos fundamentais de armazenamento e manipulação de conjuntos de dados em JavaScript. Criação, acesso e iteração de arrays aplicados a elementos gráficos e interativos. Utilização de estruturas de repetição para percorrer e controlar coleções de dados. Desenvolvimento de exercícios práticos e projetos visuais simples que exploram o potencial dos arrays na computação criativa.",
+      workload: "4 h/a",
+      prerequisites: "Não se aplica",
+      approval: "Aprovação será com média maior ou igual a 7,0 (sete) e frequência maior ou igual a 75%",
+    }
   }
 ];
